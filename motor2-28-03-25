@@ -1,0 +1,51 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+
+hub = PrimeHub()
+
+#inicializacion de variables
+
+motor_derecho = Motor(Port.B)
+motor_izquierdo = Motor(Port.C,Direction.COUNTERCLOCKWISE)
+
+#codigo de operacion
+#avance
+motor_derecho.dc(80)
+motor_izquierdo.dc(80)
+wait(1500)
+
+#movimiento en curvas
+#forma 1
+#curva a la izquierda
+motor_izquierdo.dc(55)
+motor_derecho.dc(65)
+wait(2000)
+
+#forma2
+#curva a la derecha
+motor_izquierdo.dc(80)
+motor_derecho.dc(50)
+wait(2000)
+#avanza
+motor_derecho.dc(40)
+motor_izquierdo.dc(40)
+wait(1000)
+
+#forma 3
+#curva izquierda
+motor_izquierdo.dc(35)
+motor_derecho.dc(55)
+wait(2000)
+#avanza
+motor_izquierdo.dc(40)
+motor_derecho.dc(50)
+wait(2100)
+
+"""
+motor_izquierdo.dc(40)
+motor_derecho.dc(50)
+wait(2000
+"""
