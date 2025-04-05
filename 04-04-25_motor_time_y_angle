@@ -1,0 +1,61 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+
+hub = PrimeHub()
+
+#inicio
+motor_derecho = Motor(Port.C,Direction.COUNTERCLOCKWISE)
+motor_izquierdo = Motor(Port.B)
+
+#Avances
+
+motor_derecho.run_time(360,1000,wait=False)
+motor_izquierdo.run_time(360,1000,wait=True)
+
+#avance con giro 1
+motor_derecho.run_angle(200,360,wait=False)
+motor_izquierdo.run_angle(200,650,wait=True)
+
+#avance 2
+motor_derecho.run_time(360,2500,wait=False)
+motor_izquierdo.run_time(360,2500,wait=True)
+
+
+#giro 2
+motor_derecho.run_angle(200,290)
+motor_izquierdo.run_angle(200,0,wait=True)
+
+#Avance 3
+motor_derecho.run_time(360,2000,wait=False)
+motor_izquierdo.run_time(360,2000,wait=True)
+
+#giro3 
+motor_derecho.run_angle(200,290)
+motor_izquierdo.run_angle(200,0,wait=True)
+
+#avance4
+motor_derecho.run_time(360,2000,wait=False)
+motor_izquierdo.run_time(360,2000,wait=True)
+
+#giro4
+motor_derecho.run_angle(200,290)
+motor_izquierdo.run_angle(200,0,wait=True)
+
+#avance 5
+motor_derecho.run_time(360,2000,wait=False)
+motor_izquierdo.run_time(360,2000,wait=True)
+
+#giro 5
+motor_derecho.run_angle(200,290)
+motor_izquierdo.run_angle(200,0,wait=True)
+
+#avance 6
+motor_derecho.run_time(360,1750,wait=False)
+motor_izquierdo.run_time(360,1750,wait=True)
+
+#giro 6 a la derecha
+motor_derecho.run_angle(200,0)
+motor_izquierdo.run_angle(200,290,wait=True)
