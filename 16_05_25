@@ -1,0 +1,50 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+from pybricks.pupdevices import ColorSensor
+from pybricks.parameters import Port
+from pybricks.tools import wait
+
+hub = PrimeHub()
+
+Md = Motor (Port.F)
+Mi = Motor (Port.B, Direction.COUNTERCLOCKWISE)
+sensor = ColorSensor(Port.D)
+
+Color.GREEN = Color(h=173, s=72, v=42)
+Color.RED = Color(h=350, s=82, v=60)
+Color.YELLOW = Color(h=50, s=68, v=76)
+my_colors = (Color.GREEN, Color.YELLOW, Color.RED, Color.NONE)
+
+def avanzar1 ():
+    Md.run_angle (200,360, wait=False)
+    Mi.run_angle (200,360)
+def girar1 ():
+    Md.run_angle (200,300)
+def avanzar2 ():
+    Md.run_angle (200,180, wait=False)
+    Mi.run_angle (200,180)
+while True:
+    avanzar1 ()
+    wait (1000)
+    avanzar1 ()
+    girar1 ()
+    avanzar1 ()
+    avanzar2 ()
+    print(color)
+
+    color = sensor.color() 
+    if color == Color.GREEN:
+        hub.light.on(Color.RED)
+        wait(8000)
+        hub.light.off()
+        wait(500)
+      
+    color = sensor.color() 
+    if color == Color.RED:
+        Md.stop()
+        Mi.stop()
+        wait(3000)
+        print(FRENA)
