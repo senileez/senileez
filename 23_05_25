@@ -1,0 +1,55 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+from pybricks.pupdevices import ColorDistanceSensor
+from pybricks.parameters import Port
+from pybricks.tools import wait
+
+
+hub = PrimeHub()
+motor_derecho = Motor(Port.A)
+motor_izquierdo= Motor(Port.D,Direction.COUNTERCLOCKWISE)
+sensor = ColorSensor(Port.C)
+
+Color.WHITE = Color(h=195, s=17, v=100)
+Color.BLACK = Color(h=220, s=15, v=24)
+
+my_colors = (Color.WHITE,Color.BLACK,Color.NONE)
+
+sensor.detectable_colors(my_colors)
+
+motor_derecho.run_angle(320,360*4,wait=False)
+motor_izquierdo.run_angle(320,360*4)
+
+while True:
+    color = sensor.color() 
+    print(color)
+    if color == Color.BLACK:
+     
+
+        motor_derecho.run(100)
+        motor_izquierdo.run(100)
+
+    if color == Color.WHITE:
+        motor_derecho.stop()
+        motor_izquierdo.stop()
+        wait(500)
+    
+        motor_derecho.run_angle(180,-135,wait=False)
+        motor_izquierdo.run_angle(180,145,wait=True)
+    
+    
+        motor_derecho.run_angle(135,220,wait=False)
+        motor_izquierdo.run_angle(135,220,wait=True)
+        
+
+        motor_derecho.run_angle(130,-210,wait=False)
+        motor_izquierdo.run_angle(130,-210,wait=True)
+        
+        motor_derecho.run_angle(180,145,wait=False)
+        motor_izquierdo.run_angle(180,-135,wait=True)
+        
+        motor_derecho.run_angle(100,150,wait=False)
+        motor_izquierdo.run_angle(100,150, wait=True)
