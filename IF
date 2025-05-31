@@ -1,0 +1,24 @@
+
+while True:
+    edad = int(input("INGRESE EDAD "))
+    if edad < 2:
+        print("bebe")
+
+    elif edad >= 2 and edad < 4:
+        print("infante")
+
+    elif edad >= 4 and edad < 12:
+        print("niño")
+
+    elif edad >= 13 and edad < 20:
+        print("adolescente")
+
+    elif edad >= 20 and edad < 65:
+        print("adulto")
+
+    elif edad >= 65:
+        print("anciano")
+
+    elif edad == 0:
+        break
+    
