@@ -1,0 +1,61 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+from pybricks.pupdevices import ColorSensor
+from pybricks.parameters import Port
+from pybricks.tools import wait
+
+hub = PrimeHub()
+
+sensor = ColorSensor(Port.C)
+sensor = ColorSensor(Port.A)
+motor_derecho = Motor(Port.F)
+motor_izquierdo= Motor(Port.E,Direction.COUNTERCLOCKWISE)
+
+"""
+Color.WHITE = Color(h=190, s=19, v=75)
+Color.WHITE = Color(h=50, s=5, v=43)
+Color.WHITE = Color(h=333, s=13, v=75)
+Color.RED = Color(h=353, s=89, v=32)
+Color.RED = Color(h=218, s=91, v=100)
+"""
+Color.BLUE = Color(h=217, s=84, v=66)
+my_colors = (Color.BLUE,Color.NONE)
+contador = 0
+contador_b = 0
+while True:
+    motor_derecho.run(100)
+    motor_izquierdo.run(100)
+    h,s,v = sensor.hsv()
+    if(47<h<336) and (3<s<21) and (40<v<78):
+        print("blanco")
+        contador +=1
+        print (contador)
+        wait (1000)
+    if(200<h<218) and (80<s<86) and (63<v<72):
+        print("azul")
+        contador_b +=1
+        print (contador_b)
+        wait (1000)
+        if contador_b == 4:
+            motor_derecho.stop()
+            motor_izquierdo.stop()
+        if contador == 2:
+            motor_derecho.run_angle(100,480, wait=False)
+            motor_izquierdo.run_angle(-100,480)
+            wait (1000)
+            motor_derecho.run_angle(100,480, wait=False)
+            motor_izquierdo.run_angle(-100,480)
+            wait (1000)
+        if contador == 3:
+            motor_derecho.run_angle(100,480, wait=False)
+            motor_izquierdo.run_angle(-100,480)
+            wait (1000)
+            motor_derecho.run_angle(100,480, wait=False)
+            motor_izquierdo.run_angle(-100,480)
+            wait (1000)
+            motor_derecho.run_angle(100,480, wait=False)
+            motor_izquierdo.run_angle(-100,480)
+            wait (1000)
