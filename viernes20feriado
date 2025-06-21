@@ -1,0 +1,38 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+
+hub = PrimeHub()
+
+motor_derecho = Motor(Port.B)
+motor_izquierdo = Motor(Port.A, Direction.COUNTERCLOCKWISE)
+sensor = ColorSensor(Port.F)
+
+
+#Calibracion
+while True:
+    motor_derecho.run(150)
+    motor_izquierdo.run(150)
+    wait (2400)
+    motor_derecho.stop()
+    motor_izquierdo.stop()
+    wait(2000)
+    
+    h,s,v = sensor.hsv()
+    print(h,s,v)
+    if(350<h<356) and (85<s<95) and (80<v<85):
+        hub.speaker.beep()
+        wait(500)
+        hub.speaker.beep()
+        wait(500)
+        hub.light.on(Color.RED)
+        wait(1000)
+        print("rojo")
+
+    if(152<h<158) and (72<s<79) and (50<v<68):
+        hub.light.on(Color.GREEN)
+        hub.speaker.beep()
+        wait(1500)
+        print("verde")     
