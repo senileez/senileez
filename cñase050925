@@ -1,0 +1,109 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+
+hub = PrimeHub()
+
+
+motor_derecho= Motor (Port.E)
+motor_izquierdo = Motor (Port.F, Direction.COUNTERCLOCKWISE)
+sensor_d = ColorSensor (Port.B)
+sensor_i = ColorSensor (Port.C)
+ultra = UltrasonicSensor (Port.D)
+
+Color.GREEN_I = Color(h=165, s=66, v=27)
+Color.GREEN_D = Color(h=162, s=67, v=27)
+Color.BLACK = Color(h=190, s=23, v=16)
+Color.WHITE = Color(h=204, s=16, v=96)
+
+my_colorsi = (Color.GREEN_I, Color.BLACK, Color.WHITE, Color.NONE)
+
+my_colorsd = (Color.GREEN_D, Color.BLACK, Color.WHITE, Color.NONE)
+
+sensor_i.detectable_colors(my_colorsi)
+sensor_d.detectable_colors(my_colorsd)
+
+def parar():
+    motor_derecho.stop()
+    motor_izquierdo.stop()
+    wait(2000)
+
+def avanzar():
+    motor_derecho.run(200)
+    motor_izquierdo.run(200)
+
+def avanzarpoquito():
+    motor_derecho.run(150)
+    motor_izquierdo.run(150)
+    wait(1000)
+
+hsv_i = sensor_i.hsv()
+hsv_d = sensor_d.hsv()
+
+angini = 0
+angobj = 90
+
+while True:
+     
+    print(hub.imu.heading())
+    x = hub.imu.heading()
+    
+    color = sensor_d.color()
+    reflecion = sensor_d.reflection()
+    print(color,reflecion)
+
+   
+    color = sensor_i.color()
+
+    reflecion = sensor_i.reflection()
+    print(color,reflecion)
+    
+
+#SEGUIDOR
+#detecta blanco avanza
+    if sensor_d.reflection() >35 and sensor_d.reflection()  <90:
+        motor_derecho.run (130)
+#detecta negro retrocede 
+    if sensor_d.reflection() <15:
+        
+        motor_derecho.run (-200)   
+        
+        
+#detecta blanco avanza
+    if sensor_i.reflection() >35 and sensor_i.reflection() <90:
+        motor_izquierdo.run (130)
+#detecta negro retrocede 
+    if sensor_i.reflection() <15:
+        motor_izquierdo.run (-200) 
+  
+        
+
+#DETECTA VERDE
+
+    if sensor_d.color() == Color.GREEN_D:
+        hub.light.on(Color.RED)
+        wait(1000)
+        parar()
+        if x < angobj:
+            motor_izquierdo.run(200)
+            motor_derecho.run(-200)
+            wait(1000)
+        if x == angobj:
+            motor_derecho.stop()
+            motor_izquierdo.stop()
+
+    if sensor_i.color() == Color.GREEN_I:
+        hub.light.on(Color.BLUE)
+        wait(1000)
+        parar()
+    
+        if x < angobj:
+            motor_derecho.run(200)
+            motor_izquierdo.run(-200)
+            wait(1000)
+          
+        if x == angobj:
+            motor_derecho.stop()
+            motor_izquierdo.stop()
