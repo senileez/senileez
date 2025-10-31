@@ -1,0 +1,56 @@
+#punto 1
+#mensaje = "hola"
+mensaje = "chau"
+print(mensaje)
+#punto 2
+nombre = "Patroclo"
+print("hola", nombre, "¿qué hiciste hoy?")
+
+
+#punto 3
+
+#suma
+
+resultado= 4+4
+print(f"el resultado de la suma es: {resultado}")
+
+#resta
+resultado2 = 10 - 2
+print("el resultado de la resta es: "+str(resultado2))
+
+#multiplicación 
+resultado3 = 2 * 4
+print("el resultado de la multiplicación es: ",resultado3,"ocho")
+
+#división
+resultado4 = 24 // 3
+print(f"el resultado de la división es: {resultado4}")
+
+#punto 4
+
+mi_entero= 5
+mi_decimal= 5.5 
+mi_booleano= False
+mi_string= "holaholahola"
+
+print(type(mi_entero))
+print(type(mi_decimal))
+print(type(mi_booleano))
+print(type(mi_string))
+
+#punto 5
+
+#de float a int
+
+número = 6.8
+print(int(número))
+
+#punto 6
+
+mensaje3 = input()
+print(mensaje3)
+
+edad = int(input("ingrese su edad:"))
+print(edad+10)
+
+
