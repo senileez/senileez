@@ -1,0 +1,26 @@
+"""
+#TUPLAS
+#ej 1
+tupla = (1, 2, 3 ,4 ,5 ,6 ,7 ,8, 9 ,10)
+numero = int(input("ingrese un numero del 0 al 9: "))
+print(tupla[numero])
+
+#ej2
+meses = ("mescero","enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "sep", "oct", "nov", "dic")
+num_mes = int(input("ingrese un numero del 1 al 12: "))
+print(meses[num_mes])
+
+
+#DICCIONARIOS
+#ahora tenemos claves
+#ej2
+alumnos = {"Nicole": [10,6,9], "Thiago": [9,8,7], "Martina": [5, 10, 10]}
+alumnos["Nicole"]= [10,7,9]
+alumnos["Selene"] = [10, 8, 7]
+print(alumnos)
+
+#ej1
+meses = {"enero":31, "febrero":28, "marzo":31, "abril":30, "mayo":31, "junio":30, "julio":31, "agosto":31, "sep":30, "oct":31, "nov":30, "dic":31}
+num_mes = str(input("ingrese un mes: "))
+print( "este mes tiene",meses[num_mes], "dias")
+"""
